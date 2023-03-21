@@ -2,7 +2,7 @@ import { TextField, Button } from '@mui/material'
 import {React, useRef, useEffect} from 'react'
 import './addStudent.scss'
 
-function AddStudent({students, setStudents, addStudentBtn, type, studentFirstName, studentSecondName, studentBall, studentId}) {
+function AddStudent({students, setStudents, addStudentBtn, type, studentFirstName, studentSecondName, studentBall, studentId, setStudentListType}) {
     const firstNameRef = useRef(null); 
     
     const editStudent = (evt, index) => {
@@ -64,6 +64,7 @@ function AddStudent({students, setStudents, addStudentBtn, type, studentFirstNam
         setStudents(newArray)
 
         addStudentBtn("post");
+        setStudentListType("all");
         // console.log("student" + students);
 
     }

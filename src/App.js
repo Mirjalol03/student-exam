@@ -7,7 +7,7 @@ import StudentFilter from './components/StudentFilter/StudentFilter';
 
 function App(){
   const [students, setStudents] = useState([]);
-  // const [studentsCOPY, setStudentsCOPY] = useState(students);
+  const [studentFilter, setStudentsFilter] = useState([]);
   const [addStudent, setAddStudent] = useState(false);
   const [changeType, setChangeType] = useState('post');
 
@@ -16,6 +16,9 @@ function App(){
   const [studentFirstName, setStudentFirstName] = useState("");
   const [studentSecondName, setStudentSecondName] = useState("");
   const [studentBall, setStudentBall] = useState("");
+
+
+  const [studentListType, setStudentListType] = useState("all");
 
   const addStudentBtn = (type = "post", student = {}) => {
       setAddStudent(!addStudent);
@@ -31,17 +34,17 @@ function App(){
   return (
     <div className="App">
       {addStudent && (
-          <AddStudent students={students} setStudents={setStudents} addStudentBtn={addStudentBtn} type={changeType} studentId={studentId} studentFirstName={studentFirstName} studentSecondName={studentSecondName} studentBall={studentBall}></AddStudent>
+          <AddStudent students={students} setStudents={setStudents} addStudentBtn={addStudentBtn} type={changeType} studentId={studentId} studentFirstName={studentFirstName} studentSecondName={studentSecondName} studentBall={studentBall} setStudentListType={setStudentListType}></AddStudent>
         )}
       <Header addStudentBtn={addStudentBtn}></Header>
 
       {/* student table */}
       <div className='row mt-5 container m-auto'>
-        <div className="col-3">
-          <StudentFilter students={students} setStudents={setStudents}></StudentFilter>
+        <div className="col-3"> 
+          <StudentFilter students={students} setStudents={setStudents} studentFilter={studentFilter} setStudentsFilter={setStudentsFilter} studentListType={studentListType} setStudentListType={setStudentListType}></StudentFilter>
         </div>
         <div className="col-9">
-        <StudentList students={students} setStudents={setStudents} addStudentBtn={addStudentBtn}></StudentList>
+        <StudentList type={studentListType} setType={setStudentListType} students={students} setStudents={setStudents} studentFilter={studentFilter} setStudentsFilter={setStudentsFilter} addStudentBtn={addStudentBtn}></StudentList>
         </div>
       </div>
     </div>

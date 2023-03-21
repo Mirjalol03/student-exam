@@ -4,7 +4,7 @@ import {
   TextField
 } from "@mui/material";
 
-function StudentFilter({students, setStudents}) {
+function StudentFilter({students, setStudents, studentFilter, setStudentsFilter, studentListType, setStudentListType}) {
 
 
   const inputStyles = {
@@ -27,8 +27,8 @@ function StudentFilter({students, setStudents}) {
               player.examBall >= lowBall.value 
               )
           })
-          setStudents(filteredStudents);
-
+          setStudentsFilter((filteredStudents));
+          setStudentListType("filter")
   };
 
   return (
@@ -59,9 +59,9 @@ function StudentFilter({students, setStudents}) {
           required
         />
 
-        <Button type="submit" variant="contained">
-          Filter
-        </Button>
+          <Button type="submit" variant="contained">
+            Filter
+          </Button>
       </form>
     </div>
   );
